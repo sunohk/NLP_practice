@@ -82,13 +82,13 @@ def convert_one_hot(corpus, vocab_size):
     N = corpus.shape[0]
 
     if corpus.ndim == 1:
-        one_hot = np.zeros((N, vocab_size), dtype=np.int32)
+        one_hot = np.zeros((N, vocab_size), dtype=np.int32) #2차원 배열 생성
         for idx, word_id in enumerate(corpus):
-            one_hot[idx, word_id] = 1
+            one_hot[idx, word_id] = 1 #해당 값을 1로 원핫인코딩
 
     elif corpus.ndim == 2:
         C = corpus.shape[1]
-        one_hot = np.zeros((N, C, vocab_size), dtype=np.int32)
+        one_hot = np.zeros((N, C, vocab_size), dtype=np.int32) #3차원 배열 생성
         for idx_0, word_ids in enumerate(corpus):
             for idx_1, word_id in enumerate(word_ids):
                 one_hot[idx_0, idx_1, word_id] = 1
