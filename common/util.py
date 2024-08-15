@@ -261,7 +261,8 @@ def eval_seq2seq(model, question, correct, id_to_char,
             print(mark + ' ' + guess)
         print('---')
 
-    return 1 if guess == correct else 0
+    return 1 if guess == correct else 0  
+
 
 
 def analogy(a, b, c, word_to_id, id_to_word, word_matrix, top=5, answer=None):
