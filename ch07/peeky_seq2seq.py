@@ -35,8 +35,8 @@ class PeekyDecoder:
         self.lstm.set_state(h)
 
         out = self.embed.forward(xs)
-        hs = np.repeat(h, T, axis=0).reshape(N, T, H)  # 매 timestep 입력
-        out = np.concatenate((hs, out), axis=2)  # concat 후 LSTM으로 입력
+        hs = np.repeat(h, T, axis=0).reshape(N, T, H)  # 매 timestep 입력(h를 시계열만큼 복제해서 hs에 저장)
+        out = np.concatenate((hs, out), axis=2)  # concat 후 LSTM으로 입력(hs와 Embedding 계층의 출력을 연결)
 
         out = self.lstm.forward(out)
         out = np.concatenate((hs, out), axis=2)  # concat 후 Affine으로 입력
